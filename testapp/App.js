@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { PickerIOSComponent, StyleSheet, Text, TextInput, View, YellowBox } from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
 const getFullName = (firstName, lastName) => {
@@ -8,16 +8,25 @@ const getFullName = (firstName, lastName) => {
 }
 
 const Cat = () => {
-  const firstName = "Johnny";
-  const lastName = "Cat";
-
   return (
-    <Text>Hello Anton, I'm {getFullName(firstName, lastName)}.</Text>
+    <View>
+      <Text>I'm cat!</Text>
+    </View>
   );
+}
 
-};
+const Cafe = () => {
+  return (
+    <View>
+      <Text>Hello everyone!</Text>
+      <Cat />
+      <Cat />
+    </View>
+  );
+}
 
-export default Cat;
+
+export default Cafe;
 
 /*export default function App() {
   return (
@@ -28,6 +37,7 @@ export default Cat;
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -35,4 +45,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-}); */ 
+})
+); */ 
