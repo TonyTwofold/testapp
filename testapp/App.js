@@ -1,16 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { PickerIOSComponent, StyleSheet, Text, TextInput, View, YellowBox } from 'react-native';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import React, {useState} from 'react';
+import {StyleSheet, Text, TextInput, View, Image, Button} from 'react-native';
 
-const getFullName = (firstName, lastName) => {
-  return firstName + " " + lastName;
-}
+const Cat = (props) => {
+  const [isHungry, setIsHungry] = useState(true);
 
-const Cat = () => {
   return (
     <View>
-      <Text>I'm cat!</Text>
+      <Text>I'm {props.name}! I am {isHungry ? "hungry" : "full"}!</Text>
+      <Button 
+        onPress = {() => {
+          isHungry ? setIsHungry(false) : setIsHungry(true);
+        }}
+        //disabled = {!isHungry}
+        title = {isHungry ? "Please give me foodz human!" : "About god damn time..."}
+      />
     </View>
   );
 }
@@ -18,9 +22,13 @@ const Cat = () => {
 const Cafe = () => {
   return (
     <View>
+      <Image
+        source = {{uri: "https://png.pngtree.com/png-vector/20201229/ourmid/pngtree-a-british-short-blue-and-white-cat-png-image_2654518.jpg"}}
+        style ={{height: 200, width: 200}}
+      />
       <Text>Hello everyone!</Text>
-      <Cat />
-      <Cat />
+      <Cat name="Tony"/>
+      <Cat name="Swiz"/>
     </View>
   );
 }
