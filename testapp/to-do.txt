@@ -1,0 +1,5 @@
+Steg 1: Visa ett schema på appen
+    - skapa en tabell
+    - presentera på appen
+
+    
