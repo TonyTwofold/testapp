@@ -1,44 +1,99 @@
-import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
 import {StyleSheet, Text, TextInput, View, Image, Button, SectionList} from 'react-native';
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
-const styles = StyleSheet.create( {
-    container: {
-        flex: 1,
-        paddingTop: 40,
-        backgroundColor: '#f98',
-    },
-    sectionHeader: {
-        paddingTop: 2,
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingBottom: 2,
-        fontSize: 14,
-        fontWeight: 'bold',
-        backgroundColor: 'white',
-    },
-    item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
-    },
-})
+export default class App extends Component {
+    constructor(props) { //Vad innebär detta? 
+    super(props); //Dett aborde vara att jag kallar på propsen från Component?
+    this.state = { //Här använder vi inte state som jag gjort innan, med en getter, setter, och initial state
+        HeadTable: ['Exercise', 'Weight', 'Reps', 'Sets'],
+        DataTable: [
+            [, , , ],
+            [, , , ],
+            [, , , ]
+        ],
+        day: '',
 
-const SectionListBasics = () => {
-    return (
-        <View style={styles.container}>
-            <SectionList
-                sections={[
-                    {title: 'Monday', data: ['Bench press', 'Triceps', 'Shoulders']},
-                    {title: 'Tuesday', data: ['Squats', 'Deadlift', 'Leg extention']},
-                ]}
-                renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-                renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-                keyExtractor={(item, index) => index}
-            />
+        maxArray: [150, 260],
 
-        </View>
-    );
+        workoutArray: [ //detta testar jag nu, se notes.txt
+            {
+                exercise: 'Bench press',
+                percentage: 0.7,
+                reps: 4,
+                sets: 5,
+            },
+            {
+                exercise: 'Military press',
+                percentage: 0.7,
+                reps: 5,
+                sets: 5,
+            }, 
+            {
+                exercise: 'Dips',
+                percentage: 0.8,
+                reps: 5,
+                sets: 8,
+            },
+        ],
+    }
+    }
+
+    setDayMonday () {
+        this.setState({
+            day: 'Monday',
+            DataTable: [
+                ['Bench', this.state.maxArray[0]*0.9, '10', '4'],
+                ['Military press', '70', '4', '4'],
+                ['Dips', '32', '6', '3']
+            ],
+        });
+    }
+
+    setDayTuesday () {
+        this.setState ({
+            day: 'Tuesday',
+            DataTable: [
+                ['Squat', this.state.maxArray[1]*0.9, '10', '4'],
+                ['Deadlift', '70', '4', '4'],
+                ['Calf raises', '32', '6', '3']
+            ],
+        });
+    }
+
+    render() {
+        const state = this.state;
+        return (
+            <View style={styles.container}>
+                <Table borderStyle={{borderWidth: 1, borderColor: '#f89'}}>
+                    <Row data={state.HeadTable} style={styles.HeadStyle} textStyle={styles.TableText}/>
+                    <Rows data={state.DataTable} textStyle={styles.TableText}/>
+                </Table>
+                <Text>Today is: {this.state.day}</Text>
+                <Button onPress={this.setDayMonday.bind(this)} title={"Today is Monday!"}/>
+                <Button onPress={this.setDayTuesday.bind(this)} title={"Today is Tuesday!"}/>
+            </View>
+        )
+    }
 }
 
-export default SectionListBasics;
+const styles = StyleSheet.create({
+    buttons: {
+        flex: 2,
+    },
+    container: {
+        flex: 1, 
+        padding: 19,
+        paddingTop: 35,
+        backgroundColor: '#ff9', 
+    }, 
+    HeadStyle: {
+        height: 50,
+        alignContent: 'center',
+        backgroundColor: '#f14'
+    },
+    TableText: {
+        margin: 10
+    }
+});
+
