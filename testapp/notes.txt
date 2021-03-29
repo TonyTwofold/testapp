@@ -1,0 +1,6 @@
+Just nu håller jag på att lista ut hur jag fixar med arraysen så att tabellen plockar rätt data dynamiskt. Ska prova nu (se kommentar) om jag kan 
+komma åt grejerna genom att sätta specialla id's. Här är saker jag tittar på: 
+    https://stackoverflow.com/questions/51990232/get-first-object-from-array-of-objects-in-react
+    https://www.pluralsight.com/guides/how-to-use-variables-within-classes
+    https://www.freecodecamp.org/news/functional-vs-class-components-react-native/
+
