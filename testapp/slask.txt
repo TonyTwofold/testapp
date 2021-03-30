@@ -44,17 +44,14 @@
     }]
 }
 
- <View>
-                {sampleArray.map((property, index) =>
+   {sampleArray.map((set, index) => 
                     <View key={index}>
-                        <Text>{property}</Text>
-                        <Text>
-                            {sampleArray.name.map((number, index) =>
-                                <Text key={index}>
-                                    {number}
-                                </Text>
-                            )}
-                        </Text>
-                    <View/>
-                )}
-            </View>
+                        <Text>{set.id}</Text>
+                        {set.values.map((value, index) =>
+                            <Text key={index}>
+                                {value.reps} reps @ {value.percentage*maxBench} kg
+                            </Text>
+                        )}
+
+                    </View>
+               )}

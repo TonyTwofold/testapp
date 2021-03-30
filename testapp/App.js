@@ -43,37 +43,56 @@ export default class App extends Component {
 
     parseTest () {
         var sampleArray = [
-            {
-                id: 1,
-                names: [{
-                    first: "Anton",
-                    second: "Melissa",
-                    third: "William"
-                }]
-            },
-            {
-                id: 2,
-                names: [{
-                    first: "25",
-                    second: "24",
-                    third: "21"
-                }]
-            }
+                {
+                    id: "LHP",
+                    hasSets: false,
+                },
+                {
+                    id: "benchpress",
+                    hasSets: true,
+                    sets: [
+                        {
+                            id: "set1",
+                            values: [{
+                                reps: 7,
+                                percentage: 0.7
+                            }]
+                        },
+                        {
+                            id: "set2",
+                            values: [{
+                                reps: 6,
+                                percentage: 0.8
+                            }]
+                        }
+                    ]
+                }
         ];
+
+        const maxBench = 120;
 
         return (
             <View>
-               {sampleArray.map((props, index) => 
-                    <View key={index}>
-                        <Text>{props.id}</Text>
-                        {props.names.map((number, index) =>
+                {sampleArray.map((exercise, index) =>
+                <View key={index}>
+                    <Text>
+                        {exercise.id}, has sets: {exercise.hasSets ? "yes" : "no"}
+                    </Text>
+                    {exercise.hasSets && exercise.sets.map((set, index) =>
+                        <View key={index}>
+                        <Text>{set.id}</Text>
+                        {set.values.map((value, index) =>
                             <Text key={index}>
-                                {number.first}, {number.second}, {number.third}
+                                {value.reps} reps @ {value.percentage*maxBench} kg
                             </Text>
                         )}
-
                     </View>
-               )}
+
+                    )
+                    }
+                </View>
+                )}
+            
             </View>
         )
     }
@@ -109,7 +128,7 @@ export default class App extends Component {
                     <Rows data={state.DataTable} textStyle={styles.TableText}/>
                 </Table>
                 <Text>Today is: {this.state.day}</Text>
-                <Button onPress={this.setDayMonday.bind(this)} title={"Today is Monday!"}/>
+                <Button onPress={this.setDayMonday.bind(this)} title={"Get Monday!"}/>
                 <Button onPress={this.setDayTuesday.bind(this)} title={"Today is Tuesday!"}/>
                 <Text>{this.parseTest()}</Text>
             </View>
