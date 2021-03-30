@@ -1,0 +1,45 @@
+{
+    "workouts": {
+        "week-one": {
+            "monday": {
+                "bench-press": {
+                    "set": {
+                        "1": {
+                            "percentage": 0.7,
+                            "reps": 8
+                        },
+                        "2": {
+                            "percentage": 0.75,
+                            "reps": 7
+                        },
+                        "3": {
+                            "percentage": 0.8,
+                            "reps": 6
+                        },
+                        "4": {
+                            "percentage": 0.875,
+                            "reps": 3
+                        },
+                        "5": {
+                            "percentage": 0.8,
+                            "reps": 3
+                        },
+                        "6": {
+                            "percentage": 0.8,
+                            "reps": 3
+                        },
+                        "7": {
+                            "percentage": 0.8,
+                            "reps": 3
+                        },
+                        "8": {
+                            "percentage": 0.8,
+                            "reps": 3
+                        }
+                    }
+                },
+                "DBP": "4 sets @8RPE"
+            }
+        }  
+    }
+}

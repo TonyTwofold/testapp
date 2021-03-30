@@ -4,3 +4,4 @@ komma åt grejerna genom att sätta specialla id's. Här är saker jag tittar p�
     https://www.pluralsight.com/guides/how-to-use-variables-within-classes
     https://www.freecodecamp.org/news/functional-vs-class-components-react-native/
 
+29/3: försöker fatta JSON och map(), se parseTest()

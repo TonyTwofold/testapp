@@ -1,6 +1,7 @@
 import React, {useState, Component} from 'react';
 import {StyleSheet, Text, TextInput, View, Image, Button, SectionList} from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+//import data from './data.json';
 
 export default class App extends Component {
     constructor(props) { //Vad innebär detta? 
@@ -39,6 +40,44 @@ export default class App extends Component {
     }
     }
 
+
+    parseTest () {
+        var sampleArray = [
+            {
+                id: 1,
+                names: [{
+                    first: "Anton",
+                    second: "Melissa",
+                    third: "William"
+                }]
+            },
+            {
+                id: 2,
+                names: [{
+                    first: "25",
+                    second: "24",
+                    third: "21"
+                }]
+            }
+        ];
+
+        return (
+            <View>
+               {sampleArray.map((props, index) => 
+                    <View key={index}>
+                        <Text>{props.id}</Text>
+                        {props.names.map((number, index) =>
+                            <Text key={index}>
+                                {number.first}, {number.second}, {number.third}
+                            </Text>
+                        )}
+
+                    </View>
+               )}
+            </View>
+        )
+    }
+
     setDayMonday () {
         this.setState({
             day: 'Monday',
@@ -72,6 +111,7 @@ export default class App extends Component {
                 <Text>Today is: {this.state.day}</Text>
                 <Button onPress={this.setDayMonday.bind(this)} title={"Today is Monday!"}/>
                 <Button onPress={this.setDayTuesday.bind(this)} title={"Today is Tuesday!"}/>
+                <Text>{this.parseTest()}</Text>
             </View>
         )
     }
